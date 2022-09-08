@@ -5,7 +5,11 @@ import { TodoForm } from "./components/TodoForm";
 const style = {};
 
 function App() {
-  const [todosList, setTodosList] = useState(["Lear React", "Learn Firebase"]);
+  const [todos, setTodos] = useState(["Lear React", "Learn Firebase"]);
+
+  const addTodo = (todo) => {
+    setTodos([todo, ...todos]);
+  };
 
   return (
     <div className="h-screen w-screen p-4 bg-gradient-to-r from-[#2F80ED] to-[#1CB5E0]">
@@ -15,11 +19,11 @@ function App() {
         </h1>
         <TodoForm />
         <ul>
-          {todosList.map((todo) => (
+          {todos.map((todo) => (
             <TodoItem key={todo} text={todo} />
           ))}
         </ul>
-        <p className="text-center p-2">You have {todosList.length} todos</p>
+        <p className="text-center p-2">You have {todos.length} todos</p>
       </div>
     </div>
   );
