@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { TodoItem } from "./components/TodoItem";
 import { TodoForm } from "./components/TodoForm";
+import { TodoList } from "./components/TodoList";
 
 const style = {};
 
 function App() {
-  const [todos, setTodos] = useState(["Lear React", "Learn Firebase"]);
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      task: "Learn React",
+      completed: false,
+    },
+  ]);
 
   const addTodo = (todo) => {
     setTodos([todo, ...todos]);
@@ -18,11 +25,7 @@ function App() {
           Todo App
         </h1>
         <TodoForm />
-        <ul>
-          {todos.map((todo) => (
-            <TodoItem key={todo} text={todo} />
-          ))}
-        </ul>
+        <TodoList todos={todos} />
         <p className="text-center p-2">You have {todos.length} todos</p>
       </div>
     </div>
